@@ -10,10 +10,6 @@
   <link rel="stylesheet" href="/resources/demos/style.css" />
   <link rel="stylesheet" href="style.css" type="text/css">
   <script>
-  $(function() {
-    $( "#accordion" ).accordion({collapsible:true,active:false});
-  });
-  
     $(function() {
     $( "#draggable" ).draggable();
     $( "#droppable" ).droppable({
@@ -75,20 +71,21 @@
 </head>
 <body>
 <h1>Joanna Koseff</h1> 
-<div id="accordion">
-  <h3>Education</h3>
-  <div>
-    <ul>
+<ul id="accordion">
+  <li id="header">Education</li>
+  <li><p>
+	<ul id="list">
 		<li>1999-2000 & 2004-2005: Whittier Elementary School</li>
 		<li>2000-2004: Perkins Elementary School</li>
 		<li>2005-2008: Eckstein Middle School</li>
 		<li>2008-2012: Roosevelt High School</li>
 		<li>2012-present: University of Washington</li>
     </ul>
-  </div>
-  <h3>Favorites</h3>
-  <div>
-    <ul>
+	</p></li>
+ 
+  <li id="header">Favorites</li>
+  <li><p>
+    <ul id="list">
 		<li>Favorite TV show: Project Runway</li>
 		<li>Favorite movie: <i>Titanic</i></li>
 		<li>Favorite actresses: Lea Michele & Sandra Bullock</li>
@@ -97,20 +94,20 @@
 		<li>Favorite color: blue</li>
 		<li>Favorite food: pizza</li>
     </ul>
-  </div>
-  <h3>Goals</h3>
-  <div>
-    <ul>
+	</p></li>
+  <li id="header">Goals</li>
+  <li><p>
+    <ul id="list">
 		<li>Graduate college</li>
 		<li>Get a job in user experience</li>
 		<li>Get married</li>
 		<li>Have kids</li>
 		<li>Visit places I've always wanted to go</li>
     </ul>
-  </div>
-  <h3>Fun Facts</h3>
-  <div>
-    <ul>
+  </p></li>
+  <li id="header">Fun Facts</li>
+  <li><p>
+    <ul id="list">
 		<li>I love music.</li>
 		<li>I have over 1,300 songs on my iPod.</li>
 		<li>I love to sew.</li>
@@ -119,9 +116,10 @@
 		<li>I volunteered as a camp counselor for three summers.</li>
 		<li>I love sunny, warm weather.</li>
     </ul>
-  </div>
-</div>
+  </p></li>
+</ul>
 </br></br>
+
 <h3>Get Joanna to the iSchool - Drag and drop</h3>
 <div id="draggable">
 	<p>&nbsp;O</br><b>\&nbsp;|&nbsp;/</br>&nbsp;&nbsp;|</br>&nbsp;/&nbsp;\</b></p>
@@ -129,6 +127,7 @@
 <div id="droppable">
 </div>
 </br></br></br></br></br></br></br></br></br>
+
 <h3 id="about">Slide to reveal the message</h3>
 <div id="slidingBox">
 	<p id="message">Woo this worked!</p>
@@ -136,6 +135,7 @@
 </br></br>
 <button id="slide">Slide</button>
 </br></br>
+
 <h3>Using the buttons, get the box into the hole in the wall</h3>
 </br>
 <button id="left">Left</button> <button id="right">Right</button> <button id="up">Up</button> <button id="down">Down</button>
@@ -157,10 +157,23 @@
 <div id="brick">
 </div>
 </br></br></br></br>
+
 <h3>How many clicks has this site got so far?</h3>
 <div id="progressbar"></div>
 <p>50 CLICKS!!! WOW!</p>
 </br></br></br>
- 
+
+<script>
+	$("#accordion>li:nth-child(even)").children().hide();
+	$("#accordion>li:nth-child(odd)").click(function() {
+		$("#accordion>li:nth-child(even)").css('background','#B8B8B8');
+		$(this).next().css('background','white');
+		$("#accordion>li:nth-child(even)").children().hide();
+		$(this).next().children().fadeIn(2500);
+		$("#accordion>li:nth-child(even)").animate({width:'30px'}, {duration:500, queue:false});
+		$(this).next().animate({width:'380px'}, {duration:500, queue:false});
+		
+	});
+</script> 
 </body>
 </html>
