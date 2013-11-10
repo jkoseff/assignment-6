@@ -92,7 +92,11 @@ body {
 }
 
 #progressbar {
-	color:purple;
-	width:500px;
+	width:200px;
 	height:30px;
+}
+
+.ui-widget-header {
+    background-image: none !important;
+    background-color: #FFC55C !important;
 }

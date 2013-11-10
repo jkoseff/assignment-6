@@ -63,9 +63,32 @@
   });
   
   $(function() {
-    $( "#progressbar" ).progressbar({
-      value: 50
-    });
+  
+	$( "#password" ).keyup(function() {
+		var len = $(this).val().length;
+		console.log(len);
+		
+		
+		var total = null;
+		total = len * 10;
+		if (total <= 20) {
+			$( "#strength" ).text("Poor");
+		} else if (total > 20 && total <= 50) {
+			$( "#strength" ).text("Weak");
+		} else if (total > 50 && total <= 70) {
+			$( "#strength" ).text("Okay");
+		} else {
+			$( "#strength" ).text("Good");
+		}
+		
+		barUpdate(total);
+	});
+	
+	function barUpdate(total) {
+		$( "#progressbar" ).progressbar({
+		value: total
+		});
+	}
   });
   </script>
 </head>
@@ -156,11 +179,18 @@
 </br></br></br>
 <div id="brick">
 </div>
+<<<<<<< HEAD
+</br></br></br>
+<h3>Test your password strength:</h3>
+</br>
+Password: <input type="text" id="password" />
+=======
 </br></br></br></br>
 
 <h3>How many clicks has this site got so far?</h3>
+>>>>>>> b7ea9b74ac218084c35b38853e92bcbc7cdbf1f7
 <div id="progressbar"></div>
-<p>50 CLICKS!!! WOW!</p>
+<p id="strength">Poor</p>
 </br></br></br>
 
 <script>
